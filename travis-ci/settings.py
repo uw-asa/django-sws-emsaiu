@@ -10,9 +10,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'supporttools',
-    'compressor',
-    'django_user_agents',
+    'emsaiu',
 ]
 
 MIDDLEWARE = [

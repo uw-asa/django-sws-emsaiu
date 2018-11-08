@@ -1,7 +1,7 @@
 /*jslint browser: true, plusplus: true */
-/*global jQuery, Handlebars, WhenIWorkScheduler, moment */
+/*global jQuery, moment */
 
-var WhenIWorkScheduler = (function ($) {
+var EMSAIU = (function ($) {
     "use strict";
 
     var term_lookahead = 4;

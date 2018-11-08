@@ -1,24 +1,26 @@
 sudo: false
 language: python
 python:
-- '3.6'
+  - '2.7'
+  - '3.6'
+  - '3.7-dev'
 before_script:
-- pip install -e .
-- pip install pycodestyle
-- pip install coverage
-- pip install coveralls
-- npm install -g jshint
-- cp travis-ci/manage.py manage.py
+  - pip install -e .
+  - pip install pycodestyle
+  - pip install coverage
+  - pip install coveralls
+  - npm install -g jshint
+  - cp travis-ci/manage.py manage.py
 script:
-- pycodestyle emsaiu/
-- jshint emsaiu/static/emsaiu/js/ --verbose
-- python -m compileall emsaiu/
-- coverage run --source=emsaiu manage.py test emsaiu
+  - pycodestyle emsaiu/
+  - jshint emsaiu/static/emsaiu/js/ --verbose
+  - python -m compileall emsaiu/
+  - coverage run --source=emsaiu manage.py test emsaiu
 after_script:
-- coveralls
+  - coveralls
 before_deploy:
-- find emsaiu/ -name \*.pyc -exec rm {} \;
-- echo $TRAVIS_TAG > emsaiu/VERSION
+  - find emsaiu/ -name \*.pyc -exec rm {} \;
+  - echo $TRAVIS_TAG > emsaiu/VERSION
 deploy:
   provider: pypi
   user: bradleyb
