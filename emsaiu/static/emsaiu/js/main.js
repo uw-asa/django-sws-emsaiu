@@ -170,7 +170,7 @@ var EMSAIU = (function ($) {
         })
             .fail(course_search_failure)
             .done(function (msg) {
-                $.extend(term, msg.term)
+                $.extend(term, msg.term);
                 paint_schedule(term, msg.records);
                 set_course_search_criteria();
                 history.pushState({}, '', '?term=' + term.term_id);
@@ -181,7 +181,7 @@ var EMSAIU = (function ($) {
         var term = {
             term_id: $('select#qtr-select').val().trim().toLowerCase(),
             term_name: $('select#qtr-select option:selected').text(),
-        }
+        };
 
         if (ev) {
             ev.preventDefault();
@@ -191,6 +191,7 @@ var EMSAIU = (function ($) {
     }
 
     function update_term_selector() {
+        /*jshint validthis: true */
         $('#selected-quarter').html($("option:selected", this).text());
     }
 
