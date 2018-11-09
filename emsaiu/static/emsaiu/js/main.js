@@ -242,6 +242,7 @@ var EMSAIU = (function ($) {
 
         $("form.course-search").submit(do_course_search);
         init_term_selector();
+        Handlebars.registerPartial('reservation-list', $('#reservation-list-partial').html());
     }
 
     $(document).ready(initialize);

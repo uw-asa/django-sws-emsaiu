@@ -23,11 +23,16 @@ setup(
     install_requires = [
         'AuthZ-Group',
         'Django',
+        'django-compressor',
+        'django-templatetag-handlebars',
         'Django-SupportTools<3.0 ; python_version < "3.0"',
         'Django-SupportTools ; python_version >= "3.0"',
         'UW-EMS-Client',
+        'UW-RestClients-GWS<2.0 ; python_version < "3.0"',
+        'UW-RestClients-GWS ; python_version >= "3.0"',
         'UW-RestClients-SWS<2.0 ; python_version < "3.0"',
         'UW-RestClients-SWS ; python_version >= "3.0"',
+
     ],
     license='Apache License, Version 2.0',
     description='Django app to aid in the import of the academic schedule from the UW Student Web Service',

@@ -10,6 +10,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+    'authz_group',
+    'compressor',
+    'supporttools',
+    'templatetag_handlebars',
     'emsaiu',
 ]
 
@@ -60,3 +64,8 @@ USE_TZ = True
 
 STATIC_ROOT = ''
 STATIC_URL = '/static/'
+
+AUTHZ_GROUP_BACKEND = \
+    'authz_group.authz_implementation.uw_group_service.UWGroupService'
+
+EMSTOOLS_SCHEDULER_GROUP = 'u_classrm_services_ems_schedulers'

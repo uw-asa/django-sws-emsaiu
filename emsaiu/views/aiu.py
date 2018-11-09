@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 @login_required
 def index(request, template='emsaiu/aiu.html'):
-    user = UserService().get_original_user()
+    user = request.user.username
     if not Group().is_member_of_group(user, settings.EMSTOOLS_SCHEDULER_GROUP):
         return HttpResponseRedirect("/")
 

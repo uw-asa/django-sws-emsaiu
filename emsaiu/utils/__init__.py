@@ -114,7 +114,8 @@ def get_aiu_data_for_term(term):
                         roomlist:
                     meetings.append(aiu_record_from_meeting(meeting))
 
-            if section.final_exam.building and \
+            if section.final_exam and \
+                    section.final_exam.building and \
                     section.final_exam.room_number and \
                     section.final_exam.start_date and \
                     section.final_exam.end_date and \
