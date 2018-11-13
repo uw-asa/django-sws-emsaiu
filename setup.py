@@ -24,7 +24,6 @@ setup(
         'AuthZ-Group',
         'Django<2.0',
         'django-compressor',
-        'django-templatetag-handlebars',
         'Django-SupportTools<3.0 ; python_version < "3.0"',
         'Django-SupportTools ; python_version >= "3.0"',
         'UW-EMS-Client',

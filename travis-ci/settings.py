@@ -13,7 +13,6 @@ INSTALLED_APPS = [
     'authz_group',
     'compressor',
     'supporttools',
-    'templatetag_handlebars',
     'emsaiu',
 ]
 
