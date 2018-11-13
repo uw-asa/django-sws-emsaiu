@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     'compressor',
     'supporttools',
     'templatetag_handlebars',
+    'uw_saml',
     'emsaiu',
 ]
 
@@ -65,3 +66,53 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 EMSTOOLS_SCHEDULER_GROUP = 'u_classrm_services_ems_schedulers'
+
+from django.urls import reverse_lazy
+LOGIN_URL = reverse_lazy('saml_login')
+
+UW_SAML = {
+    'strict': False,
+    'debug': True,
+    'sp': {
+        'entityId': 'https://example.uw.edu/saml2',
+        'assertionConsumerService': {
+            'url': 'https://example.uw.edu/saml/sso',
+            'binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST'
+        },
+        'singleLogoutService': {
+            'url': 'https://example.uw.edu/saml/logout',
+            'binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
+        },
+        'NameIDFormat': 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
+        'x509cert': '',
+        # for encrypted saml assertions uncomment and add the private key
+        # 'privateKey': '',
+    },
+    'idp': {
+        'entityId': 'urn:mace:incommon:washington.edu',
+        'singleSignOnService': {
+            'url': 'https://idp.u.washington.edu/idp/profile/SAML2/Redirect/SSO',
+            'binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
+        },
+        'singleLogoutService': {
+            'url': 'https://idp.u.washington.edu/idp/logout',
+            'binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
+        },
+        'x509cert': '',
+    },
+    'security': {
+        # for encrypted saml assertions
+        # 'wantAssertionsEncrypted': True,
+        # for 2FA uncomment this line
+        # 'requestedAuthnContext':  ['urn:oasis:names:tc:SAML:2.0:ac:classes:TimeSyncToken']
+    }
+}
+
+MOCK_SAML_ATTRIBUTES = {
+    'uwnetid': ['javerage'],
+    'affiliations': ['student', 'member', 'alum', 'staff', 'employee'],
+    'eppn': ['javerage@washington.edu'],
+    'scopedAffiliations': ['student@washington.edu', 'member@washington.edu'],
+    'isMemberOf': ['u_test_group', 'u_test_another_group',
+                   'u_classrm_services_ems_schedulers'],
+}

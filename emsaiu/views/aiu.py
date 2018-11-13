@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from restclients_core.exceptions import DataFailureException
-from userservice.user import UserService
+from uw_saml.decorators import group_required
 from uw_sws.term import get_current_term
 
 from emsaiu.exceptions import StudentWebServiceUnavailable
@@ -15,12 +15,8 @@ from emsaiu.exceptions import StudentWebServiceUnavailable
 logger = logging.getLogger(__name__)
 
 
-@login_required
+@group_required(settings.EMSTOOLS_SCHEDULER_GROUP)
 def index(request, template='emsaiu/aiu.html'):
-    user = request.user.username
-    if not Group().is_member_of_group(user, settings.EMSTOOLS_SCHEDULER_GROUP):
-        return HttpResponseRedirect("/")
-
     status_code = 200
 
     try:
