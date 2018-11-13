@@ -23,7 +23,6 @@ setup(
     install_requires = [
         'Django',
         'django-compressor',
-        'django-templatetag-handlebars',
         'Django-SupportTools',
         'UW-Django-SAML2',
         'UW-EMS-Client',

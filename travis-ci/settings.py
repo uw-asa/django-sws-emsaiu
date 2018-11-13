@@ -12,7 +12,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'compressor',
     'supporttools',
-    'templatetag_handlebars',
     'uw_saml',
     'emsaiu',
 ]
