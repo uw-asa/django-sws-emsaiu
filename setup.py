@@ -22,7 +22,7 @@ setup(
     include_package_data=True,
     install_requires = [
         'AuthZ-Group',
-        'Django',
+        'Django<2.0',
         'django-compressor',
         'django-templatetag-handlebars',
         'Django-SupportTools<3.0 ; python_version < "3.0"',
