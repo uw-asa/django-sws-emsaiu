@@ -2,7 +2,6 @@ import logging
 import os
 from time import strftime, tzset
 
-from authz_group import Group
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect

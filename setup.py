@@ -21,7 +21,6 @@ setup(
     packages=[PACKAGE],
     include_package_data=True,
     install_requires = [
-        'AuthZ-Group',
         'Django',
         'django-compressor',
         'django-templatetag-handlebars',
