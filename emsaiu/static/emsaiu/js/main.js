@@ -17,50 +17,13 @@ var EMSAIU = (function ($) {
         $(selector).html(tpl());
     }
 
-    function update_state_waiting(node) {
-        var tpl = Handlebars.compile($("#ajax-state-waiting").html());
-        node.html(tpl());
-    }
-
-    function update_state_successful(node) {
-        var tpl = Handlebars.compile($("#ajax-state-successful").html());
-        node.html(tpl());
-    }
-
-    function update_state_empty(node) {
-        node.empty();
-    }
-
     function course_search_in_progress() {
         $("form.course-search button").attr('disabled', 'disabled');
         search_in_progress(".course-search-result");
     }
 
-    function event_search_in_progress() {
-        $("form.event-search button").attr('disabled', 'disabled');
-        search_in_progress(".event-search-result");
-    }
-
     function course_search_complete() {
         $("form.course-search button").removeAttr('disabled');
-    }
-
-    function event_search_complete() {
-        $("form.event-search button").removeAttr('disabled');
-    }
-
-    function button_loading(node) {
-        var cluster = node.closest('.schedule-button-cluster');
-
-        $('.btn.group > button', cluster).attr('disabled', 'disabled');
-        $('.loading', cluster).show();
-    }
-
-    function button_stop_loading(node) {
-        var cluster = node.closest('.schedule-button-cluster');
-
-        $('.loading', cluster).hide();
-        $('.btn.group > button', cluster).removeAttr('disabled');
     }
 
     function api_path(service, params) {
