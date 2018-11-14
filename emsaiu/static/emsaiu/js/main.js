@@ -29,7 +29,7 @@ var EMSAIU = (function ($) {
     function api_path(service, params) {
         var query;
 
-        var url = window.scheduler.app_url + 'api/v1/' + service;
+        var url = window.emsaiu.app_url + 'api/v1/' + service;
 
         if (params) {
             query = [];
@@ -42,7 +42,7 @@ var EMSAIU = (function ($) {
         return url;
     }
 
-    function paint_schedule(term, events) {
+    function paint_course_schedule(term, courses) {
         var tpl = Handlebars.compile($('#course-search-result-template').html()),
             context = {
                 term: term.term_id,
@@ -53,15 +53,15 @@ var EMSAIU = (function ($) {
                 tsv_url: api_path('aiu/' + term.term_id + '.txt')
             };
 
-        window.scheduler.events = {};
+        window.emsaiu.courses = {};
 
-        $.each(events, function () {
+        $.each(courses, function () {
 
-            var event_start_date = moment(this.StartDate),
-                event_end_date = moment(this.EndDate),
+            var course_start_date = moment(this.StartDate),
+                course_end_date = moment(this.EndDate),
                 now = moment();
 
-            window.scheduler.events[this.CourseTitle] = this;
+            window.emsaiu.courses[this.CourseTitle] = this;
 
             context.schedule.push(this);
         });
@@ -134,7 +134,7 @@ var EMSAIU = (function ($) {
             .fail(course_search_failure)
             .done(function (msg) {
                 $.extend(term, msg.term);
-                paint_schedule(term, msg.records);
+                paint_course_schedule(term, msg.records);
                 set_course_search_criteria();
                 history.pushState({}, '', '?term=' + term.term_id);
             });
@@ -171,8 +171,8 @@ var EMSAIU = (function ($) {
             return;
         }
 
-        year = window.scheduler.term.year;
-        j = quarters.indexOf(window.scheduler.term.quarter.toLowerCase());
+        year = window.emsaiu.term.year;
+        j = quarters.indexOf(window.emsaiu.term.quarter.toLowerCase());
         for (i = 0; i < term_lookahead; i += 1) {
             s = quarters[j];
             t = s[0].toUpperCase() + s.slice(1) + ' ' + year;
@@ -198,7 +198,7 @@ var EMSAIU = (function ($) {
             crossDomain: false, // obviates need for sameOrigin test
             beforeSend: function (xhr, settings) {
                 if (!csrfSafeMethod(settings.type)) {
-                    xhr.setRequestHeader("X-CSRFToken", window.scheduler.csrftoken);
+                    xhr.setRequestHeader("X-CSRFToken", window.emsaiu.csrftoken);
                 }
             }
         });

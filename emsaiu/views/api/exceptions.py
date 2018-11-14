@@ -1,5 +1,5 @@
 """
-Custom exceptions used by EMS Scheduler.
+Custom exceptions used by EMSAIU.
 """
 
 
