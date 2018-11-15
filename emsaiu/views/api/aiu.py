@@ -6,7 +6,7 @@ from emsaiu.utils import CourseEventException, get_aiu_data_for_term
 from emsaiu.utils.validation import Validation
 from emsaiu.views.api.exceptions import (InvalidParamException,
                                          MissingParamException)
-from emsaiu.views.rest_dispatch import RESTDispatch
+from . import RESTDispatch
 
 logger = logging.getLogger(__name__)
 
