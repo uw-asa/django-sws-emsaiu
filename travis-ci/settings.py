@@ -21,7 +21,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
-    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
