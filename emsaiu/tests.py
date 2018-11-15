@@ -26,7 +26,7 @@ class AIUTest(unittest.TestCase):
         get_user(username)
         self.client.login(username=username,
                           password=get_user_pass(username))
-        
+
     def test_mainpage(self):
         self.set_user('javerage')
 
