@@ -1,3 +1,4 @@
+import json
 import unittest
 
 from django.contrib.auth.models import User
@@ -39,3 +40,18 @@ class AIUTest(unittest.TestCase):
         # Check that the rendered context matches the mock data.
         self.assertEqual(response.context['term_year'], 2013)
         self.assertEqual(response.context['term_quarter'], 'spring')
+
+    def test_api(self):
+        # Issue a GET request.
+        response = self.client.get('/api/v1/aiu/2013-spring')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        data = json.loads(response.content)
+
+        self.assertEquals(data['term']['year'], 2013)
+        self.assertEquals(data['term']['quarter'], 'Spring')
+        self.assertEquals(data['term']['first_day_quarter'], '2013-04-01')
+
+        self.assertEquals(len(data['records']), 4)
