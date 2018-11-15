@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from restclients_core.exceptions import DataFailureException
-from userservice.user import UserService
 from uw_sws.term import get_current_term
 
 from emsaiu.exceptions import StudentWebServiceUnavailable
