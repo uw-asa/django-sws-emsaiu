@@ -23,7 +23,8 @@ setup(
     install_requires = [
         'AuthZ-Group',
         'Django>=1.11.19,<2.0 ; python_version < "3.0"',
-        'Django>=1.11.19 ; python_version >= "3.0"',
+        'Django>=2.2.26,<3.0 ; python_version >= "3.0"',
+        'Django-appconf<1.0.4 ; python_version < "3.0"',
         'django-compressor',
         'Django-SupportTools<3.0 ; python_version < "3.0"',
         'Django-SupportTools ; python_version >= "3.0"',
