@@ -2,9 +2,10 @@ sudo: false
 language: python
 python:
   - '2.7'
-  - '3.6'
-  - '3.7-dev'
+  - '3.9'
+  - '3.9-dev'
 before_script:
+  - pip install git+https://github.com/uw-asa/authz_group.git@django2#egg=AuthZ-Group
   - pip install -e .
   - pip install pycodestyle
   - pip install coverage
@@ -29,5 +30,5 @@ deploy:
     secure: "hKuW9wGyAtBQAo3KfWl7OZwV/835+6il5iUP50GPgeTDPppuSWthGgMiBq06CnIqPVdJRxCc+blVt6H2hpwMFkv+nlrgthn9vB1Lt+qUiSUbPJUqsOXPFM4ulzaMMeI1D9kJ5hjnr409adSmQOzi2s5D1ux5sSTWxSEQHknbKXdL8o7H6t/6xWPOVpgAYS+6SO0pGG0Bc+T07wqWCCT6PEzzR6jzc1HIXt1IQJcxAM/1HxEpimVx3rstIuE+O4zfr6k3HQtWC5np+ztYhJrU9Rzw5tcu4Ib28zbz1MFnF5Ju/ZXBRWUBfcsk+85JIg98uXwPzxc8Y1XOAPfVH67XdhQ3m2goDceHyqiG1lUj/pELuUrkJjbPHIiJdoWUJkPoa4bJogIastaFmvw6jpWJ0OQBQbj9A2XplUxtVDEr1lzhHGBbMM2JH2q52UdPUnnghnTOJjS7Wv3aey4Td3cFmAk4uE/QIKRIM/xaRgqx6vfoF5+qUrfMZ0s7ZZTWS30Yancc92ckywdhwWIiJGA73vQ2fgXPfhe38ix6E7cR0Fw5WqHgvWTLeDSSB28OYnv/Db4ZafB7LH8H2jMFgAgPoq9kY5bd3qDRHVbR9BmqzPoAk7S5V5Y9j7FMvAvpxDqqL18fQPkhmMwvy/r9HiWfJ9JhTmeYuwLaTMGlMXoMU1k="
   on:
     tags: true
-    python: '3.6'
+    python: '3.9'
 
