@@ -1,8 +1,7 @@
 import json
-import unittest
 
 from django.contrib.auth.models import User
-from django.test import Client
+from django.test import Client, TestCase
 
 
 def get_user(username):
@@ -18,7 +17,7 @@ def get_user_pass(username):
     return 'pass'
 
 
-class AIUTest(unittest.TestCase):
+class AIUTest(TestCase):
     def setUp(self):
         # Every test needs a client.
         self.client = Client()
