@@ -1,6 +1,6 @@
 import logging
 import os
-from time import strftime, tzset
+from time import strftime
 
 from authz_group import Group
 from django.conf import settings
@@ -29,8 +29,10 @@ def index(request, template='emsaiu/aiu.html'):
         logger.exception(ex)
         raise StudentWebServiceUnavailable()
 
-    os.environ['TZ'] = 'America/Los_Angeles'
-    tzset()
+    if os.name != 'nt':
+        from time import tzset
+        os.environ['TZ'] = 'America/Los_Angeles'
+        tzset()
 
     context = {
         'term_year': term.year,
